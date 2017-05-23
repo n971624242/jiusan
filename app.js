@@ -11,9 +11,6 @@ const MysqlStore = require('koa-mysql-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var sellers = require('./routes/sellers');
-var uhome = require('./routes/uhome');
-var msg = require('./routes/msg');
 
 app.keys = ['my secret key'];  // needed for cookie-signing,设置一个签名 Cookie 的密钥
 app.use(session({store:new MysqlStore({
@@ -48,9 +45,7 @@ app.use(cors());
 // routes definition
 koa.use('/', index.routes(), index.allowedMethods());
 koa.use('/users', users.routes(), users.allowedMethods());
-koa.use('/sellers', sellers.routes(), sellers.allowedMethods());
-koa.use('/uhome', uhome.routes(), uhome.allowedMethods());
-koa.use('/msg', msg.routes(), msg.allowedMethods());
+
 
 
 // mount root routes  
